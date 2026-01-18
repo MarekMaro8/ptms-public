@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: marekmaro8/ptms-backend:latest
+    container_name: ptms_backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+  frontend:
+    image: marekmaro8/ptms-frontend:latest
+    container_name: ptms_frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
